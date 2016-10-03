@@ -10,5 +10,11 @@ namespace _11_Files
     {
         long NextId();
         void SaveStock(IAsset s);
+
+        Stock LoadStock(long l);
+
+        void Clear();
+
+        List<IAsset> FindAllStocks();
     }
 }

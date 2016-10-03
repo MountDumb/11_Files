@@ -57,5 +57,38 @@ namespace _11_Files
             StockIO sio = new StockIO();
             sio.WriteStock(f, s);
         }
+        public Stock LoadStock(long l)
+        {
+            StockIO sio = new StockIO();
+
+            foreach (var item in repositoryDir.GetFiles())
+            {
+                if (item.ToString() == "stock" + l + ".txt")
+                {
+                    return sio.ReadStock(new FileInfo(repositoryDir + item.ToString()));
+                }
+            }
+            return null;
+        }
+
+        public void Clear()
+        {
+            foreach (var item in repositoryDir.GetFiles())
+            {
+                item.Delete();
+            }
+        }
+
+        public List<IAsset> FindAllStocks()
+        {
+            List<IAsset> l = new List<IAsset>();
+            StockIO sio = new StockIO();
+
+            foreach (var item in repositoryDir.GetFiles())
+            {
+                l.Add(sio.ReadStock(new FileInfo(repositoryDir + item.ToString())));
+            }
+            return l;
+        }
     }
 }
