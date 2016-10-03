@@ -8,7 +8,7 @@ namespace _11_Files
         private string symbol;
         private double pricepershare;
         private int numshares;
-        private int id;
+        private long id;
 
         //Constructors
         public Stock(string symbol, double pricepershare, int numshares)
@@ -84,7 +84,7 @@ namespace _11_Files
             set { this.numshares = value; }
         }
 
-        public int Id
+        public long Id
         {
             get { return this.id; }
             set { this.id = value; }

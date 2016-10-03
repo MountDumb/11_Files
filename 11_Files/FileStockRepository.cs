@@ -22,13 +22,40 @@ namespace _11_Files
         public string StockFileName(long number)
         {
 
-            return "";
-        
+            return "stock" + number + ".txt"; 
+            //foreach (var item in repositoryDir.GetFiles())
+            //{
+            //    if (item.ToString() == "stock" + number + ".txt")
+            //    {
+            //        return item.ToString();
+            //    }
+            //}
+            //return "";
+
         }
 
         public string StockFileName(Stock s)
         {
-            return "";
+            return "stock" + s.Id + ".txt";
+            //foreach (var item in repositoryDir.GetFiles())
+            //{
+            //    if (item.ToString() == "stock" + s.Id + ".txt")
+            //    {
+            //        return item.ToString();
+            //    } 
+            //}   
+            //return "";
+        }
+
+        public void SaveStock(IAsset ias)
+        {
+
+            NextId();
+            Stock s = (Stock)ias;
+            s.Id = id;
+            FileInfo f = new FileInfo(repositoryDir + StockFileName(s));
+            StockIO sio = new StockIO();
+            sio.WriteStock(f, s);
         }
     }
 }

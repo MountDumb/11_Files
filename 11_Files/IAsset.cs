@@ -9,7 +9,7 @@ namespace _11_Files
     public interface IAsset
     {
         string Symbol { get; }
-        int Id { get; }
+        long Id { get; }
         double GetValue();
         
 
