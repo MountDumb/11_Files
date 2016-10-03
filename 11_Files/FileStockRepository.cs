@@ -23,28 +23,13 @@ namespace _11_Files
         {
 
             return "stock" + number + ".txt"; 
-            //foreach (var item in repositoryDir.GetFiles())
-            //{
-            //    if (item.ToString() == "stock" + number + ".txt")
-            //    {
-            //        return item.ToString();
-            //    }
-            //}
-            //return "";
-
+            
         }
 
         public string StockFileName(Stock s)
         {
             return "stock" + s.Id + ".txt";
-            //foreach (var item in repositoryDir.GetFiles())
-            //{
-            //    if (item.ToString() == "stock" + s.Id + ".txt")
-            //    {
-            //        return item.ToString();
-            //    } 
-            //}   
-            //return "";
+      
         }
 
         public void SaveStock(IAsset ias)
@@ -61,14 +46,14 @@ namespace _11_Files
         {
             StockIO sio = new StockIO();
 
-            foreach (var item in repositoryDir.GetFiles())
+            foreach (FileInfo item in repositoryDir.GetFiles())
             {
                 if (item.ToString() == "stock" + l + ".txt")
                 {
                     return sio.ReadStock(new FileInfo(repositoryDir + item.ToString()));
                 }
             }
-            return null;
+            throw new System.Exception("File not found");
         }
 
         public void Clear()
@@ -88,7 +73,10 @@ namespace _11_Files
             {
                 l.Add(sio.ReadStock(new FileInfo(repositoryDir + item.ToString())));
             }
+            
             return l;
         }
+
+        
     }
 }
