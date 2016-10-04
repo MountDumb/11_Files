@@ -6,11 +6,12 @@ namespace _11_Files
     public class FileStockRepository : IStockRepository, IFileRepository
     {
         private DirectoryInfo repositoryDir;
-        private long id = 0;
+        private long id;
 
         public FileStockRepository(DirectoryInfo repositoryDir)
         {
             this.repositoryDir = repositoryDir;
+            id = FindAllStocks().Count;
         }
 
         public long NextId()
@@ -69,9 +70,10 @@ namespace _11_Files
             List<IAsset> l = new List<IAsset>();
             StockIO sio = new StockIO();
 
-            foreach (var item in repositoryDir.GetFiles())
+            foreach (FileInfo item in repositoryDir.GetFiles())
             {
                 l.Add(sio.ReadStock(new FileInfo(repositoryDir + item.ToString())));
+                
             }
             
             return l;
