@@ -11,9 +11,18 @@ namespace _11_Files
         public FileStockRepository(DirectoryInfo repositoryDir)
         {
             this.repositoryDir = repositoryDir;
-            id = FindAllStocks().Count;
+            id = CalculateId();
         }
 
+        private long CalculateId()
+        {
+            long lId = 0;
+            foreach (Stock s in FindAllStocks())
+            {
+                if (lId <= s.Id) { lId = s.Id; }
+            }
+            return lId;
+        }
         public long NextId()
         {
             id++;
