@@ -13,7 +13,8 @@ namespace _11_Files
 
         public void WriteStock(FileInfo f, Stock s)
         {
-            StreamWriter writer = new StreamWriter(f.ToString());
+            // Streamwriter writer = new StreamWriter(f.ToString());
+            StreamWriter writer = f.CreateText(); 
             writer.WriteLine(s.Id);
             writer.WriteLine(s.Symbol);
             writer.WriteLine(s.PricePerShare);

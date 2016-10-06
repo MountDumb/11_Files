@@ -45,8 +45,8 @@ namespace _11_Files
             //"Stock[symbol=ABC,pricePerShare=12.23,numShares=50]"
             string ppsstring = pricepershare.ToString(CultureInfo.InvariantCulture);
 
-            return "Stock[symbol=" + this.symbol + ",pricePerShare="
-                + ppsstring + ",numShares=" + this.numshares + "]";
+            return "Stock: " + this.symbol + "; Price per Share: "
+                + ppsstring + "; Number of Shares: " + this.numshares;
         }
 
         public override bool Equals(object obj)
